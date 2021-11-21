@@ -21,7 +21,7 @@ function App() {
         <Route path='/'>
           <AdminLayout />
         </Route>
-       
+
         <Route>
           <NotFound />
         </Route>

@@ -11,7 +11,7 @@ function* handleLogin(payload: LoginPayload) {
     localStorage.setItem('token', response.token);
     yield put(authActions.loginSuccess(response));
     // redirect to admin page
-    yield put(push('/'));
+    yield put(push('/deploy-react'));
   } catch (error: any) {
     console.log(error);
     yield put(authActions.loginFailed(error.message));
@@ -24,7 +24,7 @@ function* handleRegister(payload: LoginPayload) {
     localStorage.setItem('token', response.token);
     yield put(authActions.registerSuccess(response));
     // redirect to admin page
-    yield put(push('/'));
+    yield put(push('/deploy-react'));
   } catch (error: any) {
     console.log(error);
     yield put(authActions.registerFailed(error.message));
@@ -34,7 +34,7 @@ function* handleRegister(payload: LoginPayload) {
 function* handleLogout() {
   // yield delay(500);
   localStorage.removeItem('token');
-  yield put(push('/'));
+  yield put(push('/deploy-react'));
 }
 
 function* watchLoginFlow() {
@@ -46,7 +46,7 @@ function* watchLoginFlow() {
       yield fork(handleLogin, action.payload);
     }
     if (token) {
-      yield put(push('/'));
+      yield put(push('/deploy-react'));
     } else {
       const action: PayloadAction<any> = yield take(authActions.register.type);
       yield fork(handleRegister, action.payload);
