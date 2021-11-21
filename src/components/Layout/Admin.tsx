@@ -29,6 +29,7 @@ export function AdminLayout() {
     <Box className={classes.root}>
       <Box className={classes.main}>
         <Switch>
+          
           <Route exact path='/'>
             <Home />
           </Route>
